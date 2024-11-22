@@ -1,0 +1,7 @@
+{
+  "name": "FeManagement",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

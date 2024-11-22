@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title slot="start">Data Peserta</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="container" *ngIf="participants">
+    <ion-list style="border-radius: 10px;">
+      <ion-item>
+        <ion-label position="floating">Nama</ion-label>
+        <ion-input type="text" [(ngModel)]="participants.name" name="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="participants.email" name="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">No. Telp</ion-label>
+        <ion-input type="tel" [(ngModel)]="participants.phone" name="phone"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" color="success" (click)="onSubmit()"
+      >Update</ion-button>
+
+      <ion-button expand="block" color="danger" (click)="onDelete()"
+      >Hapus</ion-button>
+
+    </ion-list>
+  </div>
+</ion-content>

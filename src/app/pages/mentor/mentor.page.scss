@@ -1,0 +1,85 @@
+ion-toolbar {
+    display: flex;
+    align-items: center;
+  
+    ion-searchbar {
+      width: 70%;
+      margin: 0 auto; /* Mengatur searchbar berada di tengah */
+      padding-top: 10px;
+      padding-bottom: 9px;
+    }
+  }
+    /* mentor Table */
+    .mentor-table {
+      margin: 16px 0;
+      width: 90%;
+      margin: 0 auto 20px;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+    
+    .mentor-table th,
+    .mentor-table td {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    
+    .mentor-table th {
+      background-color: #787878;
+      font-weight: bold;
+    }
+    
+    .mentor-table tr:nth-child(even) {
+      background-color: #ffffff;
+    }
+    
+    .mentor-table tr:hover {
+      background-color: #c6c6c6;
+    }
+    
+    ion-button{
+      padding: 5px 5px;
+      // font-size: 12px;
+      color: #fff;
+  
+      ion-icon{
+        text-align: center;
+        align-items: center;
+      }
+    }
+  
+   
+    /* Pagination Controls */
+    .pagination-controls {
+      text-align: center;
+      margin: 20px 0;
+    }
+    
+    .pagination-controls .ngx-pagination a {
+      text-decoration: none;
+      color: #3498db;
+      font-size: 14px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      margin: 0 2px;
+      border: 1px solid #ddd;
+    }
+  
+    .ngx-pagination a{
+      color: #3498db;
+    }
+    
+    .pagination-controls .ngx-pagination .current {
+      background-color: #3498db;
+      color: rgb(194, 13, 13);
+      font-weight: bold;
+    }
+    
+    .pagination-controls .ngx-pagination a:hover {
+      background-color: #5b1616;
+    }
+    

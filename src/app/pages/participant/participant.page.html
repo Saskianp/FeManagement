@@ -1,0 +1,74 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title slot="start">Peserta</ion-title>
+
+    <ion-searchbar
+      slot="start"
+      mode="ios"
+      [(ngModel)]="searchQuery"
+      placeholder="Cari Peserta"
+      (ionInput)="onSearch()"
+      >
+    </ion-searchbar>
+
+    <ion-button slot="end" color="success" style="margin-right: 1cm; color: white;"
+    [routerLink]="['/add-participant']">
+      Tambah
+    </ion-button>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <br>
+  <table class="participant-table">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Nama</th>
+        <th>Email</th>
+        <th>No. Telp</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <div *ngIf="participants.length > 0; else noData"></div>
+      <tr>
+      <ng-template  #noData style="text-align: center;">
+        <p>Tidak ada peserta untuk ditampilkan.</p>
+      </ng-template></tr>
+      
+
+      <tr
+        *ngFor="
+          let participant of participants | paginate: { id: 'server', itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems };
+          let i = index
+        "
+      >
+        <td>{{ i + 1 + (currentPage - 1) * itemsPerPage }}</td>
+        <td>{{ participant.name }}</td>
+        <td>{{ participant.email }}</td>
+        <td>{{ participant.phone }}</td>
+        <td>
+          <ion-button expand="block" color="primary" [routerLink]="['/update-participant', participant.id]">
+            <ion-icon name="eye" ></ion-icon>
+          </ion-button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination-controls">
+    <pagination-controls
+    color="primary"
+      id="server"
+      (pageChange)="getPage($event)">
+    </pagination-controls>
+  </div>
+  
+</ion-content>

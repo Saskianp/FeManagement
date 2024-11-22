@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title slot="start">Tambah Pemateri</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="container">
+    <ion-list style="border-radius: 10px;">
+      <ion-item>
+        <ion-label position="floating">Nama</ion-label>
+        <ion-input type="text" [(ngModel)]="name" name="name" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="email" name="email" required></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" color="success" (click)="onSubmit()"
+      [disabled]="!name || !email"
+      >Kirim</ion-button>
+
+    </ion-list>
+  </div>
+</ion-content>

@@ -1,0 +1,107 @@
+<!-- <ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay" style="width: 20%;">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-list-header>
+            <img src="../assets/logo_adhivasindo_landscape-putih.png" alt="">
+          </ion-list-header>
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <ion-list id="labels-list">
+          <ion-list-header>PROFILE</ion-list-header>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of profile; let i = index">
+            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <ion-list id="log-list">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of Log; let i = index">
+            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app> -->
+
+
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <!-- Side Menu -->
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title>My App</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let page of appPages">
+            <ion-item
+              [routerLink]="page.url"
+              routerDirection="root"
+              detail="false"
+              lines="none"
+              routerLinkActive="selected"
+              (click)="navigate(page)"
+            >
+              <ion-icon slot="start" [name]="page.icon"></ion-icon>
+              <ion-label>{{ page.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <ion-list id="labels-list">
+          <ion-list-header>PROFILE</ion-list-header>
+          <ion-menu-toggle auto-hide="false" *ngFor="let page of profile; let i = index">
+              <ion-item
+                [routerLink]="page.url"
+                routerDirection="root"
+                detail="false"
+                lines="none"
+                routerLinkActive="selected"
+              >
+              <ion-icon aria-hidden="true" slot="start" [ios]="page.icon + '-outline'" [md]="page.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ page.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <ion-list id="labels-list">
+          <!-- <ion-list-header>PROFILE</ion-list-header> -->
+          <ion-menu-toggle auto-hide="false" *ngFor="let page of Log; let i = index">
+              <ion-item
+                [routerLink]="page.url"
+                routerDirection="root"
+                detail="false"
+                lines="none"
+                (click)="navigate(page)"
+              >
+              <ion-icon aria-hidden="true" slot="start" [ios]="page.icon + '-outline'" [md]="page.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ page.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+      </ion-content>
+    </ion-menu>
+
+    <!-- Main Content -->
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

@@ -1,0 +1,31 @@
+.regist-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border-radius: 10px;
+    background-color: #d7d7d7;
+  
+    ion-list {
+      width: 90%;
+      max-width: 400px;
+
+      ion-button{
+        padding: 10px 10px 10px 10px;
+      }
+    }
+
+    .footer-text {
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--ion-color-medium);
+  
+      a {
+        text-decoration: none;
+        color: var(--ion-color-primary);
+        font-weight: bold;
+      }
+    }
+  }
+  
