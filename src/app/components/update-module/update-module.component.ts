@@ -11,7 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class UpdateModuleComponent  implements OnInit {
 
   title: string = '';
-  description: string = '';
+  description: string = ''
   class_module: string = '';
   date: string = '';
   mentor_id: number = 0;
@@ -146,6 +146,7 @@ export class UpdateModuleComponent  implements OnInit {
               {
                 text: 'OK',
                 handler: async () => {
+                  // Navigasi kembali ke halaman modul setelah penghapusan
                   await this.router.navigate(['/modul']);
                 }
               }
