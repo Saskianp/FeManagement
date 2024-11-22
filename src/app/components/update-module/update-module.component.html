@@ -1,3 +1,51 @@
-<p>
-  update-module works!
-</p>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title slot="start">Data Modul</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="modules">
+    <ion-list style="border-radius: 10px;">
+      <ion-item>
+        <ion-label position="fixed">Judul Modul</ion-label>
+        <ion-input type="text" [(ngModel)]="modules.title"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Deskripsi</ion-label>
+        <ion-textarea [(ngModel)]="modules.description"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Kelas</ion-label>
+        <ion-input type="text" [(ngModel)]="modules.class_module"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Tanggal</ion-label>
+        <ion-input [(ngModel)]="modules.date" type="date" (ionChange)="onDateChange($event)">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Pemateri</ion-label>
+        <ion-select placeholder="Pilih Pemateri" mode="ios" (ionChange)="onMentorChange($event)">
+          <ion-select-option *ngFor="let mentor of mentors" [value]="mentor.id" >
+            {{ mentor.name }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-button expand="block" color="success" (click)="onSubmit()"
+      >Update</ion-button>
+
+      <ion-button expand="block" color="danger" (click)="onDelete()"
+      >Hapus</ion-button>
+
+    </ion-list>
+  </div>
+</ion-content>

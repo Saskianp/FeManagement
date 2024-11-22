@@ -16,6 +16,8 @@ import { AddMentorComponentModule } from './components/add-mentor/add-mentor.com
 import { UpdateMentorComponentModule } from './components/update-mentor/update-mentor.component.module';
 import { AddModuleComponentModule } from './components/add-module/add-module.component.module';
 import { UpdateModuleComponentModule } from './components/update-module/update-modul.component.module';
+import { AddModuleContentComponentModule } from './components/add-module-content/add-module-content.component.module';
+import { UpdateModuleContentComponentModule } from './components/update-module-content/update-modul-content.component.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,7 +33,8 @@ import { UpdateModuleComponentModule } from './components/update-module/update-m
     UpdateMentorComponentModule,
     AddModuleComponentModule,
     UpdateModuleComponentModule,
-
+    AddModuleContentComponentModule,
+    UpdateModuleContentComponentModule,
   ],
   providers: [
     ApiService,

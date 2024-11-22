@@ -8,12 +8,15 @@ import { ModulPageRoutingModule } from './modul-routing.module';
 
 import { ModulPage } from './modul.page';
 
+import { NgxPaginationModule } from 'ngx-pagination';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ModulPageRoutingModule
+    ModulPageRoutingModule,
+    NgxPaginationModule,
   ],
   declarations: [ModulPage]
 })

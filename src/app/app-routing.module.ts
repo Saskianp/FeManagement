@@ -8,6 +8,8 @@ import { AddMentorComponent } from './components/add-mentor/add-mentor.component
 import { UpdateMentorComponent } from './components/update-mentor/update-mentor.component';
 import { AddModuleComponent } from './components/add-module/add-module.component';
 import { UpdateModuleComponent } from './components/update-module/update-module.component';
+import { AddModuleContentComponent } from './components/add-module-content/add-module-content.component';
+import { UpdateModuleContentComponent } from './components/update-module-content/update-module-content.component';
 
 const routes: Routes = [
   {
@@ -45,6 +47,16 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'add-modul-content/:id',  
+    component: AddModuleContentComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'update-modul-content/:id',  
+    component: UpdateModuleContentComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'participant',
     loadChildren: () => import('./pages/participant/participant.module').then( m => m.ParticipantPageModule),
     canActivate: [AuthGuard],
@@ -65,7 +77,8 @@ const routes: Routes = [
   },
   {
     path: 'mentor',
-    loadChildren: () => import('./pages/mentor/mentor.module').then( m => m.MentorPageModule)
+    loadChildren: () => import('./pages/mentor/mentor.module').then( m => m.MentorPageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'add-mentor',  
@@ -76,6 +89,12 @@ const routes: Routes = [
     path: 'update-mentor/:id',  
     component: UpdateMentorComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'setting',
+    loadChildren: () => import('./pages/setting/setting.module').then( m => m.SettingPageModule),
+    canActivate: [AuthGuard],
+
   },
 ];
 

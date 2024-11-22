@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Profile/Setting</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="payload">
+  <ion-list class="ion-text-center">
+    <p>Halooo {{payload.username}}</p>
+    <br><br>
+    <ion-icon name="person" style="width: 4cm;"></ion-icon>
+    <p>{{payload.username}}</p>
+    <p>{{payload.email}}</p>
+
+  </ion-list>
+</ion-content>
+

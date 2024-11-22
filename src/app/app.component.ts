@@ -15,7 +15,6 @@ export class AppComponent {
   ];
   public profile = [
     { title: 'Setting', url: '/setting', icon: 'settings' },
-    { title: 'Kalender', url: '/date', icon: 'calendar-clear' }, 
   ];
   public Log = [
     { title: 'Logout', url: '', icon: 'log-out', action: 'logout' }, 
@@ -37,7 +36,6 @@ export class AppComponent {
     this.apiService.logout(); // Hapus token dan status autentikasi
     this.router.navigate(['/login']); // Redirect ke halaman login
   }
-
 
 }
 

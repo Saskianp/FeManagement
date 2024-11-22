@@ -28,6 +28,7 @@ export class LoginPage implements OnInit {
         async (response) => {
           if (response.token) {
             this.apiService.saveToken(response.token);  // Simpan token
+            this.apiService.savePayload(response.payload);  // Simpan data
             console.log('Login success:', response);
             this.navCtrl.navigateRoot('/dashboard'); 
             const successAlert = await this.alertController.create({

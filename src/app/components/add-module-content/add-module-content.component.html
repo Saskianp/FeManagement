@@ -1,3 +1,28 @@
-<p>
-  add-module-content works!
-</p>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title slot="start">Tambah Materi Modul</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div >
+    <ion-list style="border-radius: 10px;">
+      <ion-item>
+        <ion-label position="fixed">Judul Materi</ion-label>
+        <ion-input type="text" [(ngModel)]="title"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Isi Materi </ion-label>
+        <ion-textarea [(ngModel)]="content"></ion-textarea>
+      </ion-item>
+
+      <ion-button expand="block" color="success" (click)="onSubmit()"
+      >Kirim</ion-button>
+
+    </ion-list>
+  </div>
+</ion-content>

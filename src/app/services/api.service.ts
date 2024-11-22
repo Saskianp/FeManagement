@@ -44,14 +44,29 @@ export class ApiService {
     return localStorage.getItem('auth_token');
   }
 
+  getPayload(): any {
+    const payload = localStorage.getItem('payload');
+    return payload ? JSON.parse(payload) : null; // Mengambil dan mengubah string JSON kembali menjadi objek
+  }
+
+
   // Fungsi untuk menyimpan token ke localStorage
   saveToken(token: string): void {
     localStorage.setItem('auth_token', token);
   }
 
+  savePayload(payload: any): void {
+    localStorage.setItem('payload', JSON.stringify(payload)); // Mengubah objek menjadi string JSON sebelum disimpan
+  }
+
+
   // Fungsi untuk menghapus token dari localStorage
   clearToken(): void {
     localStorage.removeItem('auth_token');
+  }
+
+  clearPayload(): void {
+    localStorage.removeItem('payload');
   }
 
   isLoggedIn(): boolean {
@@ -60,6 +75,7 @@ export class ApiService {
 
   logout() {
     this.clearToken();
+    this.clearPayload();
     this.router.navigate(['/login']);
   }
 
@@ -77,6 +93,17 @@ export class ApiService {
     };
   
     return this.http.post(url, body, { headers });
+  }
+
+  getProfile(): Observable<any> {
+    const url = this.address + 'users/profile';
+    const token = this.getToken();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token ? `Bearer ${token}` : ''
+    });
+  
+    return this.http.get(url, { headers });
   }
 
   //Participant
@@ -155,6 +182,17 @@ export class ApiService {
     return this.http.get(url, { headers });
   }
 
+  getAllMentors(): Observable<any> {
+    const url = `${this.address}mentor`;
+    const token = this.getToken();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token ? `Bearer ${token}` : ''
+    });
+  
+    return this.http.get(url, { headers });
+  }
+
   getMentorById(id: number): Observable<any> {
     const url = `${this.address}mentor/get/${id}`;
     const token = this.getToken();
@@ -205,4 +243,145 @@ export class ApiService {
   
     return this.http.delete(url, { headers });
   }
+
+  //Module
+  getAllModule(limit: number, page: number, search: string = ''): Observable<any> {
+    const url = `${this.address}module?limit=${limit}&page=${page}&search=${search}`;
+    const token = this.getToken();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token ? `Bearer ${token}` : ''
+    });
+  
+    return this.http.get(url, { headers });
+  }
+
+  getModuleById(id: number): Observable<any> {
+    const url = `${this.address}module/get/${id}`;
+    const token = this.getToken();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token ? `Bearer ${token}` : ''
+    });
+  
+    return this.http.get(url, { headers });
+  }
+  
+  createModule(title: string, description: string, class_module: string, date: string, mentor_id: number): Observable<any> {
+    const url = this.address + 'module/create';
+    const token = this.getToken();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token ? `Bearer ${token}` : ''
+    });
+
+    const body = {
+      title: title,
+      description: description,
+      class_module: class_module,
+      date: date,
+      mentor_id: mentor_id
+    };
+
+    return this.http.post(url, body, { headers });
+  }
+
+  updateModule(id: number, title: string, description: string, class_module: string, date: string, mentor_id: number): Observable<any> {
+    const url = `${this.address}module/update/${id}`;
+    const token = this.getToken();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token ? `Bearer ${token}` : ''
+    });
+  
+    const body = {
+      title: title,
+      description: description,
+      class_module: class_module,
+      date: date,
+      mentor_id: mentor_id
+    };
+  
+    return this.http.put(url, body, { headers });
+  }  
+  
+  deleteModuleById(id: number): Observable<any> {
+    const url = `${this.address}module/delete/${id}`;
+    const token = this.getToken();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token ? `Bearer ${token}` : ''
+    });
+  
+    return this.http.delete(url, { headers });
+  }
+
+  //Module Content
+  getAllModuleContent(limit: number, page: number): Observable<any> {
+    const url = `${this.address}module/content?limit=${limit}&page=${page}`;
+    const token = this.getToken();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token ? `Bearer ${token}` : ''
+    });
+  
+    return this.http.get(url, { headers });
+  }
+
+  getModuleContentById(id: number): Observable<any> {
+    const url = `${this.address}module/content/get/${id}`;
+    const token = this.getToken();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token ? `Bearer ${token}` : ''
+    });
+  
+    return this.http.get(url, { headers });
+  }
+  
+  createModuleContent(module_id: number, title: string, content: string): Observable<any> {
+    const url = this.address + 'module/content/create';
+    const token = this.getToken();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token ? `Bearer ${token}` : ''
+    });
+
+    const body = {
+      module_id: module_id,
+      title: title,
+      content: content
+    };
+
+    return this.http.post(url, body, { headers });
+  }
+
+  updateModuleContent(id: number, module_id: number, title: string, content: string): Observable<any> {
+    const url = `${this.address}module/content/update/${id}`;
+    const token = this.getToken();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token ? `Bearer ${token}` : ''
+    });
+  
+    const body = {
+      module_id: module_id,
+      title: title,
+      content: content
+    };
+  
+    return this.http.put(url, body, { headers });
+  }  
+  
+  deleteModuleContentById(id: number): Observable<any> {
+    const url = `${this.address}module/content/delete/${id}`;
+    const token = this.getToken();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token ? `Bearer ${token}` : ''
+    });
+  
+    return this.http.delete(url, { headers });
+  }
+
 }
